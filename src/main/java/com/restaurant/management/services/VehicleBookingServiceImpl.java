@@ -35,4 +35,10 @@ public class VehicleBookingServiceImpl implements VehicleBookingService {
 		return vehicleBookingRepository.findById(id).get();
 	}
 
+	@Transactional
+	public String deleteVehicleBookingDetail(Long id) {
+		vehicleBookingRepository.deleteById(id);
+		return "Vehicle Booking Detail Removed !! " + id;
+	}
+
 }

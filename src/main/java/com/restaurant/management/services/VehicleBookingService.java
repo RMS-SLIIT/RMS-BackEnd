@@ -14,4 +14,6 @@ public interface VehicleBookingService {
 
 	public VehicleBooking getVehicleBookingDetailById(Long id);
 
+	public String deleteVehicleBookingDetail(Long id);
+
 }
