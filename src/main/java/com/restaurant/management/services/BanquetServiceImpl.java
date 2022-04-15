@@ -31,4 +31,14 @@ public class BanquetServiceImpl implements BanquetService {
 		return banquetRepository.findAll();
 	}
 
+	@Transactional
+	public boolean isBanquetIdExists(Long id) {
+		return banquetRepository.existsById(id);
+	}
+
+	@Transactional(readOnly = true)
+	public Banquet getProductById(Long id) {
+		return banquetRepository.findById(id).get();
+	}
+
 }

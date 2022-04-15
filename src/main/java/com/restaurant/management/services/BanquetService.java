@@ -12,4 +12,8 @@ public interface BanquetService {
 	public boolean isDateOfEventExists(Date dateOfEvent);
 
 	public List<Banquet> getBanquets();
+
+	public boolean isBanquetIdExists(Long id);
+
+	public Banquet getProductById(Long id);
 }
