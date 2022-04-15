@@ -10,4 +10,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
 	public boolean existsByEmployeeId(String employeeId);
 
+	public Employee findAllByEmployeeId(String employeeId);
+
 }
