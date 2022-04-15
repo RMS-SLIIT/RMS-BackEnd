@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +39,13 @@ public class BanquetController {
 	@GetMapping(value = EndPointURI.BANQUET)
 	public ResponseEntity<Object> getAllBanquets() {
 		return new ResponseEntity<Object>(mapper.map(banquetService.getBanquets(), BanquetDto.class), HttpStatus.OK);
+	}
+
+	@GetMapping(value = EndPointURI.BANQUET_BY_ID)
+	public ResponseEntity<Object> getBanquetById(@PathVariable Long id) {
+		if (banquetService.isBanquetIdExists(id)) {
+			return new ResponseEntity<>(mapper.map(banquetService.getProductById(id), BanquetDto.class), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
 	}
 }
