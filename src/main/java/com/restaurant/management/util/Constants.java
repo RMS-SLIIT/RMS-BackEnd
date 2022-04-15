@@ -11,4 +11,5 @@ public class Constants {
 	// roombooking
 	public static final String ROOMBOOKING = "RoomBooking";
 	public static final String ADD_ROOMBOOKING_SUCCESS = "RoomBooking Added Successfully";
+	public static final String DELETE_ROOMBOOKING_SUCCESS = "RoomBooking Deleted Successfully";
 }

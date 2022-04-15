@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,14 @@ public class RoomBookingController {
 					mapper.map(roomBookingService.getRoomBookingDetailById(id), RoomBookingDto.class), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(Constants.ROOMBOOKING, HttpStatus.BAD_REQUEST);
+	}
+
+	@DeleteMapping(value = EndPointURI.ROOMBOOKING_BY_ID)
+	public ResponseEntity<Object> deleteRoomBookingDetail(@PathVariable Long id) {
+		if (!roomBookingService.isRoomBookingIdExists(id)) {
+			return new ResponseEntity<>(Constants.ROOMBOOKING, HttpStatus.BAD_REQUEST);
+		}
+		roomBookingService.deleteRoomBookingDetail(id);
+		return new ResponseEntity<Object>(Constants.DELETE_ROOMBOOKING_SUCCESS, HttpStatus.OK);
 	}
 }
