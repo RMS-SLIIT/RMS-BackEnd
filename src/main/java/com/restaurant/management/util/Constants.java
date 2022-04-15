@@ -8,8 +8,13 @@ public class Constants {
 	public static final String BANQUET = "Banquet";
 	public static final String ADD_BANQUET_SUCCESS = "Banquet Added Successfully";
 
-	// roombooking
+	// roomBooking
 	public static final String ROOMBOOKING = "RoomBooking";
 	public static final String ADD_ROOMBOOKING_SUCCESS = "RoomBooking Added Successfully";
 	public static final String DELETE_ROOMBOOKING_SUCCESS = "RoomBooking Deleted Successfully";
+
+	// employee
+	public static final String EMPLOYEE = "Employee";
+	public static final String ADD_EMPLOYEE_SUCCESS = "Employee Added Successfully";
+	public static final String DELETE_EMPLOYEE_SUCCESS = "Employee Deleted Successfully";
 }
