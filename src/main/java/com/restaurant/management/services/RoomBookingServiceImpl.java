@@ -35,4 +35,10 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 		return roomBookingRepository.findById(id).get();
 	}
 
+	@Transactional
+	public String deleteRoomBookingDetail(Long id) {
+		roomBookingRepository.deleteById(id);
+		return "Product removed !! " + id;
+	}
+
 }

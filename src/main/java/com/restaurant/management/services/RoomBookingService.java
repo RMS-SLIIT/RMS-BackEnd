@@ -14,4 +14,6 @@ public interface RoomBookingService {
 
 	public RoomBooking getRoomBookingDetailById(Long id);
 
+	public String deleteRoomBookingDetail(Long id);
+
 }
