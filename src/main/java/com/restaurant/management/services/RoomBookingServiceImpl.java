@@ -1,5 +1,7 @@
 package com.restaurant.management.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,21 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 	@Transactional
 	public void saveRoomBooking(RoomBooking roomBooking) {
 		roomBookingRepository.save(roomBooking);
+	}
+
+	@Transactional(readOnly = true)
+	public List<RoomBooking> getRoomBookingDetails() {
+		return roomBookingRepository.findAll();
+	}
+
+	@Transactional
+	public boolean isRoomBookingIdExists(Long id) {
+		return roomBookingRepository.existsById(id);
+	}
+
+	@Transactional(readOnly = true)
+	public RoomBooking getRoomBookingDetailById(Long id) {
+		return roomBookingRepository.findById(id).get();
 	}
 
 }

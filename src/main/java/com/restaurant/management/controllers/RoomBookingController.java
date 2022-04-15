@@ -5,6 +5,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +31,20 @@ public class RoomBookingController {
 	public ResponseEntity<Object> addRoomBooking(@Valid @RequestBody RoomBookingDto roomBookingDto) {
 		roomBookingService.saveRoomBooking(mapper.map(roomBookingDto, RoomBooking.class));
 		return new ResponseEntity<>(Constants.ADD_ROOMBOOKING_SUCCESS, HttpStatus.OK);
+	}
+
+	@GetMapping(value = EndPointURI.ROOMBOOKING)
+	public ResponseEntity<Object> getAllRoomBookingDetails() {
+		return new ResponseEntity<Object>(mapper.map(roomBookingService.getRoomBookingDetails(), RoomBookingDto.class),
+				HttpStatus.OK);
+	}
+
+	@GetMapping(value = EndPointURI.ROOMBOOKING_BY_ID)
+	public ResponseEntity<Object> getRoomBookingDetailById(@PathVariable Long id) {
+		if (roomBookingService.isRoomBookingIdExists(id)) {
+			return new ResponseEntity<>(
+					mapper.map(roomBookingService.getRoomBookingDetailById(id), RoomBookingDto.class), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(Constants.ROOMBOOKING, HttpStatus.BAD_REQUEST);
 	}
 }
