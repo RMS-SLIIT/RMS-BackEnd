@@ -38,7 +38,7 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 	@Transactional
 	public String deleteRoomBookingDetail(Long id) {
 		roomBookingRepository.deleteById(id);
-		return "Product removed !! " + id;
+		return "Room Booking Detail Removed !! " + id;
 	}
 
 }

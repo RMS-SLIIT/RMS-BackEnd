@@ -16,4 +16,8 @@ public interface EmployeeService {
 
 	public Employee getEmployeeByEmployeeId(String employeeId);
 
+	public boolean isEmployeeIdExists(Long id);
+
+	public String deleteEmployeeById(Long id);
+
 }

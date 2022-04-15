@@ -40,4 +40,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepository.findAllByEmployeeId(employeeId);
 	}
 
+	@Transactional
+	public boolean isEmployeeIdExists(Long id) {
+		return employeeRepository.existsById(id);
+	}
+
+	@Override
+	public String deleteEmployeeById(Long id) {
+		employeeRepository.deleteById(id);
+		return "Employee Removed !! " + id;
+	}
+
 }
