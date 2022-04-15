@@ -1,0 +1,15 @@
+package com.restaurant.management.services;
+
+import java.sql.Date;
+import java.util.List;
+
+import com.restaurant.management.entities.Banquet;
+
+public interface BanquetService {
+
+	public void saveBanquet(Banquet banquet);
+	
+	public boolean isDateOfEventExists(Date dateOfEvent);
+
+	public List<Banquet> getBanquets();
+}
