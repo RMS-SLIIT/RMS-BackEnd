@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,5 +50,14 @@ public class BanquetController {
 			return new ResponseEntity<>(mapper.map(banquetService.getProductById(id), BanquetDto.class), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
+	}
+	
+	@DeleteMapping(value = EndPointURI.BANQUET_BY_ID)
+	public ResponseEntity<Object> deleteBanquetDetail(@PathVariable Long id) {
+		if (!banquetService.isBanquetIdExists(id)) {
+			return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
+		}
+		banquetService.deleteBanquetDetail(id);
+		return new ResponseEntity<Object>(Constants.DELETE_BANQUET_SUCCESS, HttpStatus.OK);
 	}
 }

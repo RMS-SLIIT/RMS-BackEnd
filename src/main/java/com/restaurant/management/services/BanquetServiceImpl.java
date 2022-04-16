@@ -41,4 +41,10 @@ public class BanquetServiceImpl implements BanquetService {
 		return banquetRepository.findById(id).get();
 	}
 
+	@Transactional
+	public String deleteBanquetDetail(Long id) {
+		banquetRepository.deleteById(id);
+		return "Banquet Details Removed !! " + id;
+	}
+
 }
