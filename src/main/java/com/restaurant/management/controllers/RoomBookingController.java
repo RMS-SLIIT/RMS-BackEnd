@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.management.dto.RoomBookingDto;
+import com.restaurant.management.dto.RoomBookingSearchDto;
 import com.restaurant.management.entities.RoomBooking;
 import com.restaurant.management.mapper.Mapper;
 import com.restaurant.management.services.RoomBookingService;
@@ -58,5 +60,25 @@ public class RoomBookingController {
 		}
 		roomBookingService.deleteRoomBookingDetail(id);
 		return new ResponseEntity<Object>(Constants.DELETE_ROOMBOOKING_SUCCESS, HttpStatus.OK);
+	}
+
+	@PutMapping(value = EndPointURI.ROOMBOOKING)
+	public ResponseEntity<Object> EditRoomBooking(@Valid @RequestBody RoomBookingDto roomBookingDto) {
+		if (!roomBookingService.isRoomBookingIdExists(roomBookingDto.getId())) {
+			return new ResponseEntity<>(Constants.ROOMBOOKING, HttpStatus.BAD_REQUEST);
+		}
+		RoomBooking roomBook = new RoomBooking();
+		roomBook = roomBookingService.getRoomBookingDetailById(roomBookingDto.getId());
+		roomBookingDto.setNic(roomBook.getNic());
+		roomBookingDto.setCheckInDate(roomBook.getCheckInDate());
+		roomBookingDto.setCheckOutDate(roomBook.getCheckOutDate());
+		roomBookingService.editRoomBookingDetail(mapper.map(roomBookingDto, RoomBooking.class));
+		return new ResponseEntity<>(Constants.UPDATE_ROOMBOOKING_SUCCESS, HttpStatus.OK);
+	}
+
+	@GetMapping(value = EndPointURI.ROOMBOOKING_SEARCH)
+	public ResponseEntity<Object> searchRoomBooking(RoomBookingSearchDto roomBookingSearchDto) {
+		return new ResponseEntity<>(mapper.map(roomBookingService.multipulSearchRoomBooking(roomBookingSearchDto),
+				RoomBookingSearchDto.class), HttpStatus.OK);
 	}
 }

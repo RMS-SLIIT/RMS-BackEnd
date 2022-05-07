@@ -14,6 +14,7 @@ public class Constants {
 	public static final String ROOMBOOKING = "RoomBooking";
 	public static final String ADD_ROOMBOOKING_SUCCESS = "RoomBooking Added Successfully";
 	public static final String DELETE_ROOMBOOKING_SUCCESS = "RoomBooking Deleted Successfully";
+	public static final String UPDATE_ROOMBOOKING_SUCCESS = "RoomBooking Updated Successfully";
 
 	// employee
 	public static final String EMPLOYEE = "Employee";

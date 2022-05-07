@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.querydsl.core.BooleanBuilder;
+import com.restaurant.management.dto.RoomBookingSearchDto;
+import com.restaurant.management.entities.QRoomBooking;
 import com.restaurant.management.entities.RoomBooking;
 import com.restaurant.management.repositories.RoomBookingRepository;
+import com.restaurant.management.util.Utils;
 
 @Service
 public class RoomBookingServiceImpl implements RoomBookingService {
@@ -39,6 +43,28 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 	public String deleteRoomBookingDetail(Long id) {
 		roomBookingRepository.deleteById(id);
 		return "Room Booking Detail Removed !! " + id;
+	}
+
+	@Transactional
+	public void editRoomBookingDetail(RoomBooking roomBooking) {
+		roomBookingRepository.save(roomBooking);
+	}
+
+	@Transactional
+	public List<RoomBooking> multipulSearchRoomBooking(RoomBookingSearchDto roomBookingSearchDto) {
+		BooleanBuilder booleanBuilder = new BooleanBuilder();
+		if (Utils.isNotNullAndEmpty(roomBookingSearchDto.getFullName())) {
+			booleanBuilder
+					.and(QRoomBooking.roomBooking.fullName.containsIgnoreCase(roomBookingSearchDto.getFullName()));
+		}
+		if (Utils.isNotNullAndEmpty(roomBookingSearchDto.getNic())) {
+			booleanBuilder.and(QRoomBooking.roomBooking.nic.containsIgnoreCase(roomBookingSearchDto.getNic()));
+		}
+		if (Utils.isNotNullAndEmptyId(roomBookingSearchDto.getMobileNumber())) {
+			booleanBuilder.and(QRoomBooking.roomBooking.mobileNumber.eq(roomBookingSearchDto.getMobileNumber()));
+		}
+		return (List<RoomBooking>) roomBookingRepository.findAll(booleanBuilder);
+
 	}
 
 }
