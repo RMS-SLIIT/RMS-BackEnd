@@ -47,4 +47,9 @@ public class BanquetServiceImpl implements BanquetService {
 		return "Banquet Details Removed !! " + id;
 	}
 
+	@Transactional
+	public void updateBanquet(Banquet banquet) {
+		banquetRepository.save(banquet);
+	}
+
 }

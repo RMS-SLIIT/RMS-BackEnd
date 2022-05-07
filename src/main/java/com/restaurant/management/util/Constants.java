@@ -1,7 +1,5 @@
 package com.restaurant.management.util;
 
-import org.springframework.util.MultiValueMap;
-
 public class Constants {
 
 	public static final String ID = "id";
@@ -10,6 +8,7 @@ public class Constants {
 	public static final String BANQUET = "Banquet";
 	public static final String ADD_BANQUET_SUCCESS = "Banquet Added Successfully";
 	public static final String DELETE_BANQUET_SUCCESS = "Banquet Deleted Successfully";
+	public static final String UPDATE_BANQUET_SUCCESS = "Banquet Updated Successfully";
 
 	// roomBooking
 	public static final String ROOMBOOKING = "RoomBooking";

@@ -8,7 +8,7 @@ import com.restaurant.management.entities.Banquet;
 public interface BanquetService {
 
 	public void saveBanquet(Banquet banquet);
-	
+
 	public boolean isDateOfEventExists(Date dateOfEvent);
 
 	public List<Banquet> getBanquets();
@@ -18,4 +18,6 @@ public interface BanquetService {
 	public Banquet getProductById(Long id);
 
 	public String deleteBanquetDetail(Long id);
+
+	public void updateBanquet(Banquet banquet);
 }

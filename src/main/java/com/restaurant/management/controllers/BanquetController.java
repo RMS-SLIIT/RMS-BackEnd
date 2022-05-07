@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,7 +52,7 @@ public class BanquetController {
 		}
 		return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@DeleteMapping(value = EndPointURI.BANQUET_BY_ID)
 	public ResponseEntity<Object> deleteBanquetDetail(@PathVariable Long id) {
 		if (!banquetService.isBanquetIdExists(id)) {
@@ -59,5 +60,18 @@ public class BanquetController {
 		}
 		banquetService.deleteBanquetDetail(id);
 		return new ResponseEntity<Object>(Constants.DELETE_BANQUET_SUCCESS, HttpStatus.OK);
+	}
+
+	@PutMapping(value = EndPointURI.BANQUET)
+	public ResponseEntity<Object> editBanquet(@Valid @RequestBody BanquetDto banquetDto) {
+		if (!banquetService.isBanquetIdExists(banquetDto.getId())) {
+			return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
+		}
+
+		if (banquetService.isDateOfEventExists(banquetDto.getDateOfEvent())) {
+			return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
+		}
+		banquetService.updateBanquet(mapper.map(banquetDto, Banquet.class));
+		return new ResponseEntity<>(Constants.UPDATE_BANQUET_SUCCESS, HttpStatus.OK);
 	}
 }
