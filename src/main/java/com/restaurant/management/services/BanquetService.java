@@ -3,6 +3,7 @@ package com.restaurant.management.services;
 import java.sql.Date;
 import java.util.List;
 
+import com.restaurant.management.dto.BanquetSearchDto;
 import com.restaurant.management.entities.Banquet;
 
 public interface BanquetService {
@@ -20,4 +21,6 @@ public interface BanquetService {
 	public String deleteBanquetDetail(Long id);
 
 	public void updateBanquet(Banquet banquet);
+
+	public List<Banquet> multipulSearchEmployees(BanquetSearchDto banquetSearchDto);
 }

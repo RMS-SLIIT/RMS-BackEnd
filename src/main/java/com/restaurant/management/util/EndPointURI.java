@@ -8,6 +8,7 @@ public class EndPointURI {
 	// banquet
 	public static final String BANQUET = BASE_API_PATH + "banquet";
 	public static final String BANQUET_BY_ID = BANQUET + SLASH + ID;
+	public static final String BANQUET_SEARCH = BASE_API_PATH + "banquetsearch";
 
 	// roomBooking
 	public static final String ROOMBOOKING = BASE_API_PATH + "roomBooking";
