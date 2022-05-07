@@ -24,4 +24,10 @@ public class Constants {
 	public static final String VEHICLEBOOKING = "VehicleBooking";
 	public static final String ADD_VEHICLEBOOKING_SUCCESS = "VehicleBooking Added Successfully";
 	public static final String DELETE_VEHICLEBOOKING_SUCCESS = "VehicleBooking Deleted Successfully";
+
+	// inventory
+	public static final String INVENTORY = "Inventory";
+	public static final String ADD_INVENTORY_SUCCESS = "Inventory Added Successfully";
+	public static final String EDIT_INVENTORY_SUCCESS = "Inventory Edited Successfully";
+	public static final String DELETE_INVENTORY_SUCCESS = "Inventory Deleted Successfully";
 }

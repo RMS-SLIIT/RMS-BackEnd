@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.querydsl.core.BooleanBuilder;
+import com.restaurant.management.dto.BanquetSearchDto;
 import com.restaurant.management.entities.Banquet;
+import com.restaurant.management.entities.QBanquet;
 import com.restaurant.management.repositories.BanquetRepository;
+import com.restaurant.management.util.Utils;
 
 @Service
 public class BanquetServiceImpl implements BanquetService {
@@ -50,6 +54,28 @@ public class BanquetServiceImpl implements BanquetService {
 	@Transactional
 	public void updateBanquet(Banquet banquet) {
 		banquetRepository.save(banquet);
+	}
+
+	@Override
+	public List<Banquet> multipulSearchEmployees(BanquetSearchDto banquetDto) {
+		BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+		if (Utils.isNotNullAndEmpty(banquetDto.getGuestName())) {
+			booleanBuilder.and(QBanquet.banquet.guestName.containsIgnoreCase(banquetDto.getGuestName()));
+		}
+		if (Utils.isNotNullAndEmpty(banquetDto.getEventType())) {
+			booleanBuilder.and(QBanquet.banquet.eventType.containsIgnoreCase(banquetDto.getEventType()));
+		}
+		if (Utils.isNotNullAndEmpty(banquetDto.getDecoration())) {
+			booleanBuilder.and(QBanquet.banquet.decoration.containsIgnoreCase(banquetDto.getDecoration()));
+		}
+
+		if (Utils.isNotNullAndEmpty(banquetDto.getAdditionalService())) {
+			booleanBuilder
+					.and(QBanquet.banquet.additionalService.containsIgnoreCase(banquetDto.getAdditionalService()));
+		}
+
+		return (List<Banquet>) banquetRepository.findAll(booleanBuilder);
 	}
 
 }

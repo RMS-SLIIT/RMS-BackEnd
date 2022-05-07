@@ -8,6 +8,7 @@ public class EndPointURI {
 	// banquet
 	public static final String BANQUET = BASE_API_PATH + "banquet";
 	public static final String BANQUET_BY_ID = BANQUET + SLASH + ID;
+	public static final String BANQUET_SEARCH = BASE_API_PATH + "banquetsearch";
 
 	// roomBooking
 	public static final String ROOMBOOKING = BASE_API_PATH + "roomBooking";
@@ -22,5 +23,9 @@ public class EndPointURI {
 	// vehicleBooking
 	public static final String VEHICLEBOOKING = BASE_API_PATH + "vehicleBooking";
 	public static final String VEHICLEBOOKING_BY_ID = VEHICLEBOOKING + SLASH + ID;
+
+	// inventory
+	public static final String INVENTORY = BASE_API_PATH + "inventory";
+	public static final String INVENTORY_BY_ID = INVENTORY + SLASH + ID;
 
 }

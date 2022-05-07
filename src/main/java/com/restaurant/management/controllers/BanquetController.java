@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.management.dto.BanquetDto;
+import com.restaurant.management.dto.BanquetSearchDto;
 import com.restaurant.management.entities.Banquet;
 import com.restaurant.management.mapper.Mapper;
 import com.restaurant.management.services.BanquetService;
@@ -51,6 +52,12 @@ public class BanquetController {
 			return new ResponseEntity<>(mapper.map(banquetService.getProductById(id), BanquetDto.class), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
+	}
+
+	@GetMapping(value = EndPointURI.BANQUET_SEARCH)
+	public ResponseEntity<Object> searchBanquet(BanquetSearchDto banquetSearchDto) {
+		return new ResponseEntity<>(
+				mapper.map(banquetService.multipulSearchEmployees(banquetSearchDto), BanquetDto.class), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = EndPointURI.BANQUET_BY_ID)
