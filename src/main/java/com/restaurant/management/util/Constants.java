@@ -30,4 +30,11 @@ public class Constants {
 	public static final String ADD_INVENTORY_SUCCESS = "Inventory Added Successfully";
 	public static final String EDIT_INVENTORY_SUCCESS = "Inventory Edited Successfully";
 	public static final String DELETE_INVENTORY_SUCCESS = "Inventory Deleted Successfully";
+
+	// roomDetail
+	public static final String ROOMDETAIL = "RoomDetail";
+	public static final String ADD_ROOMDETAIL_SUCCESS = "RoomDetail Added Successfully";
+	public static final String DELETE_ROOMDETAIL_SUCCESS = "RoomDetail Deleted Successfully";
+	public static final String EDIT_ROOMDETAIL_SUCCESS = "RoomDetail Edited Successfully";
+
 }
