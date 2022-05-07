@@ -22,5 +22,5 @@ public interface BanquetService {
 
 	public void updateBanquet(Banquet banquet);
 
-	public List<Banquet> multipulSearchEmployees(BanquetSearchDto banquetSearchDto);
+	public List<Banquet> multipulSearchBanquet(BanquetSearchDto banquetSearchDto);
 }

@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.restaurant.management.dto.BanquetDto;
+import com.restaurant.management.dto.BanquetSearchDto;
 import com.restaurant.management.dto.InventoryDto;
+import com.restaurant.management.dto.InventorySearchDto;
 import com.restaurant.management.dto.RoomBookingDto;
 import com.restaurant.management.entities.Inventory;
 import com.restaurant.management.mapper.Mapper;
@@ -58,6 +61,13 @@ public class InventoryController {
 					HttpStatus.OK);
 		}
 		return new ResponseEntity<>(Constants.INVENTORY, HttpStatus.BAD_REQUEST);
+	}
+
+	@GetMapping(value = EndPointURI.INVENTORY_SEARCH)
+	public ResponseEntity<Object> searchInventory(InventorySearchDto inventorySearchDto) {
+		return new ResponseEntity<>(
+				mapper.map(inventoryService.multipulSearchInventory(inventorySearchDto), InventoryDto.class),
+				HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = EndPointURI.INVENTORY_BY_ID)

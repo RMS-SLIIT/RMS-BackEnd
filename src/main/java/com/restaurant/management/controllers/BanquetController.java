@@ -57,7 +57,7 @@ public class BanquetController {
 	@GetMapping(value = EndPointURI.BANQUET_SEARCH)
 	public ResponseEntity<Object> searchBanquet(BanquetSearchDto banquetSearchDto) {
 		return new ResponseEntity<>(
-				mapper.map(banquetService.multipulSearchEmployees(banquetSearchDto), BanquetDto.class), HttpStatus.OK);
+				mapper.map(banquetService.multipulSearchBanquet(banquetSearchDto), BanquetDto.class), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = EndPointURI.BANQUET_BY_ID)
