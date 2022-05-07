@@ -49,7 +49,7 @@ public class BanquetController {
 	@GetMapping(value = EndPointURI.BANQUET_BY_ID)
 	public ResponseEntity<Object> getBanquetById(@PathVariable Long id) {
 		if (banquetService.isBanquetIdExists(id)) {
-			return new ResponseEntity<>(mapper.map(banquetService.getProductById(id), BanquetDto.class), HttpStatus.OK);
+			return new ResponseEntity<>(mapper.map(banquetService.getBanquetById(id), BanquetDto.class), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
 	}
@@ -78,6 +78,9 @@ public class BanquetController {
 		if (banquetService.isDateOfEventExists(banquetDto.getDateOfEvent())) {
 			return new ResponseEntity<>(Constants.BANQUET, HttpStatus.BAD_REQUEST);
 		}
+		Banquet banq = new Banquet();
+		banq = banquetService.getBanquetById(banquetDto.getId());
+		banquetDto.setDateOfEvent(banq.getDateOfEvent());
 		banquetService.updateBanquet(mapper.map(banquetDto, Banquet.class));
 		return new ResponseEntity<>(Constants.UPDATE_BANQUET_SUCCESS, HttpStatus.OK);
 	}
