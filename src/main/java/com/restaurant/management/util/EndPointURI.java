@@ -30,4 +30,9 @@ public class EndPointURI {
 	public static final String INVENTORY_BY_ID = INVENTORY + SLASH + ID;
 	public static final String INVENTORY_SEARCH = BASE_API_PATH + "inventorysearch";
 
+	// roomDetail
+	public static final String ROOMDETAIL = BASE_API_PATH + "roomdetail";
+	public static final String ROOMDETAIL_BY_ID = ROOMDETAIL + SLASH + ID;
+	public static final String ROOMDETAIL_SEARCH = BASE_API_PATH + "roomdetailsearch";
+
 }
