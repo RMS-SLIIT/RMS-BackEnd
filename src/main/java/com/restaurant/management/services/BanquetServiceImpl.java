@@ -41,7 +41,7 @@ public class BanquetServiceImpl implements BanquetService {
 	}
 
 	@Transactional(readOnly = true)
-	public Banquet getProductById(Long id) {
+	public Banquet getBanquetById(Long id) {
 		return banquetRepository.findById(id).get();
 	}
 

@@ -1,10 +1,14 @@
 package com.restaurant.management.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,18 +17,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.restaurant.management.dto.BanquetDto;
-import com.restaurant.management.dto.BanquetSearchDto;
 import com.restaurant.management.dto.InventoryDto;
 import com.restaurant.management.dto.InventorySearchDto;
-import com.restaurant.management.dto.RoomBookingDto;
 import com.restaurant.management.entities.Inventory;
 import com.restaurant.management.mapper.Mapper;
-import com.restaurant.management.services.EmployeeService;
 import com.restaurant.management.services.InventoryService;
 import com.restaurant.management.util.Constants;
 import com.restaurant.management.util.EndPointURI;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class InventoryController {
 
@@ -44,6 +45,9 @@ public class InventoryController {
 		if (!inventoryService.isInventoryIdExists(inventoryDto.getId())) {
 			return new ResponseEntity<>(Constants.INVENTORY, HttpStatus.BAD_REQUEST);
 		}
+		Inventory invent = new Inventory();
+		invent = inventoryService.getInventoryDetailsById(inventoryDto.getId());
+		inventoryDto.setSupplierDisappliedDate(invent.getSupplierDisappliedDate());
 		inventoryService.editInventory(mapper.map(inventoryDto, Inventory.class));
 		return new ResponseEntity<>(Constants.EDIT_INVENTORY_SUCCESS, HttpStatus.OK);
 	}

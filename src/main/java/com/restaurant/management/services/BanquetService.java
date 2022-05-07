@@ -16,7 +16,7 @@ public interface BanquetService {
 
 	public boolean isBanquetIdExists(Long id);
 
-	public Banquet getProductById(Long id);
+	public Banquet getBanquetById(Long id);
 
 	public String deleteBanquetDetail(Long id);
 
