@@ -27,5 +27,6 @@ public class EndPointURI {
 	// inventory
 	public static final String INVENTORY = BASE_API_PATH + "inventory";
 	public static final String INVENTORY_BY_ID = INVENTORY + SLASH + ID;
+	public static final String INVENTORY_SEARCH = BASE_API_PATH + "inventorysearch";
 
 }

@@ -56,8 +56,8 @@ public class BanquetServiceImpl implements BanquetService {
 		banquetRepository.save(banquet);
 	}
 
-	@Override
-	public List<Banquet> multipulSearchEmployees(BanquetSearchDto banquetDto) {
+	@Transactional(readOnly = true)
+	public List<Banquet> multipulSearchBanquet(BanquetSearchDto banquetDto) {
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
 
 		if (Utils.isNotNullAndEmpty(banquetDto.getGuestName())) {
