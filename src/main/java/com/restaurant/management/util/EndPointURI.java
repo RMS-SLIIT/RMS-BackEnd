@@ -13,6 +13,7 @@ public class EndPointURI {
 	// roomBooking
 	public static final String ROOMBOOKING = BASE_API_PATH + "roomBooking";
 	public static final String ROOMBOOKING_BY_ID = ROOMBOOKING + SLASH + ID;
+	public static final String ROOMBOOKING_SEARCH = BASE_API_PATH + "roombookingsearch";
 
 	// employee
 	public static final String EMPLOYEE = BASE_API_PATH + "employee";
