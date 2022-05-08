@@ -25,6 +25,7 @@ public class EndPointURI {
 	// vehicleBooking
 	public static final String VEHICLEBOOKING = BASE_API_PATH + "vehicleBooking";
 	public static final String VEHICLEBOOKING_BY_ID = VEHICLEBOOKING + SLASH + ID;
+	public static final String VEHICLEBOOKING_SEARCH = BASE_API_PATH + "vehiclebookingsearch";
 
 	// inventory
 	public static final String INVENTORY = BASE_API_PATH + "inventory";
