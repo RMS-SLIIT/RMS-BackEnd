@@ -53,15 +53,8 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 	@Transactional
 	public List<RoomBooking> multipulSearchRoomBooking(RoomBookingSearchDto roomBookingSearchDto) {
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
-		if (Utils.isNotNullAndEmpty(roomBookingSearchDto.getFullName())) {
-			booleanBuilder
-					.and(QRoomBooking.roomBooking.fullName.containsIgnoreCase(roomBookingSearchDto.getFullName()));
-		}
 		if (Utils.isNotNullAndEmpty(roomBookingSearchDto.getNic())) {
 			booleanBuilder.and(QRoomBooking.roomBooking.nic.containsIgnoreCase(roomBookingSearchDto.getNic()));
-		}
-		if (Utils.isNotNullAndEmptyId(roomBookingSearchDto.getMobileNumber())) {
-			booleanBuilder.and(QRoomBooking.roomBooking.mobileNumber.eq(roomBookingSearchDto.getMobileNumber()));
 		}
 		return (List<RoomBooking>) roomBookingRepository.findAll(booleanBuilder);
 

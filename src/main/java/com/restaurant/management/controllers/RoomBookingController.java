@@ -79,6 +79,6 @@ public class RoomBookingController {
 	@GetMapping(value = EndPointURI.ROOMBOOKING_SEARCH)
 	public ResponseEntity<Object> searchRoomBooking(RoomBookingSearchDto roomBookingSearchDto) {
 		return new ResponseEntity<>(mapper.map(roomBookingService.multipulSearchRoomBooking(roomBookingSearchDto),
-				RoomBookingSearchDto.class), HttpStatus.OK);
+				RoomBookingDto.class), HttpStatus.OK);
 	}
 }
