@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.management.dto.EmployeeDto;
+import com.restaurant.management.dto.EmployeeSearchDto;
 import com.restaurant.management.dto.RoomBookingDto;
 import com.restaurant.management.entities.Employee;
 import com.restaurant.management.mapper.Mapper;
@@ -43,6 +44,13 @@ public class EmployeeController {
 	@GetMapping(value = EndPointURI.EMPLOYEE)
 	public ResponseEntity<Object> getAllEmployee() {
 		return new ResponseEntity<Object>(mapper.map(employeeService.getAllEmployees(), EmployeeDto.class),
+				HttpStatus.OK);
+	}
+
+	@GetMapping(value = EndPointURI.EMPLOYEE_SEARCH)
+	public ResponseEntity<Object> searchEmployee(EmployeeSearchDto employeeSearchDto) {
+		return new ResponseEntity<>(
+				mapper.map(employeeService.multipulSearchEmployee(employeeSearchDto), EmployeeSearchDto.class),
 				HttpStatus.OK);
 	}
 
