@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.management.dto.EmployeeDto;
 import com.restaurant.management.dto.EmployeeSearchDto;
-import com.restaurant.management.dto.InventoryDto;
-import com.restaurant.management.dto.RoomBookingDto;
 import com.restaurant.management.entities.Employee;
-import com.restaurant.management.entities.Inventory;
 import com.restaurant.management.mapper.Mapper;
 import com.restaurant.management.services.EmployeeService;
 import com.restaurant.management.util.Constants;
