@@ -36,4 +36,9 @@ public class EndPointURI {
 	public static final String ROOMDETAIL_BY_ID = ROOMDETAIL + SLASH + ID;
 	public static final String ROOMDETAIL_SEARCH = BASE_API_PATH + "roomdetailsearch";
 
+	// transport
+	public static final String TRANSPORT = BASE_API_PATH + "transport";
+	public static final String TRANSPORT_BY_ID = TRANSPORT + SLASH + ID;
+	public static final String TRANSPORT_SEARCH = BASE_API_PATH + "transportsearch";
+
 }

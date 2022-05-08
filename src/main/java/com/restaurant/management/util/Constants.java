@@ -38,4 +38,10 @@ public class Constants {
 	public static final String DELETE_ROOMDETAIL_SUCCESS = "RoomDetail Deleted Successfully";
 	public static final String EDIT_ROOMDETAIL_SUCCESS = "RoomDetail Edited Successfully";
 
+	// transport
+	public static final String TRANSPORT = "Transport";
+	public static final String ADD_TRANSPORT_SUCCESS = "Transport Added Successfully";
+	public static final String EDIT_TRANSPORT_SUCCESS = "Transport Edited Successfully";
+	public static final String DELETE_TRANSPORT_SUCCESS = "Transport Deleted Successfully";
+
 }
