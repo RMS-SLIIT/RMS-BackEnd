@@ -20,6 +20,7 @@ public class Constants {
 	public static final String EMPLOYEE = "Employee";
 	public static final String ADD_EMPLOYEE_SUCCESS = "Employee Added Successfully";
 	public static final String DELETE_EMPLOYEE_SUCCESS = "Employee Deleted Successfully";
+	public static final String UPDATE_EMPLOYEE_SUCCESS = "Employee Updated Successfully";
 
 	// vehicleBooking
 	public static final String VEHICLEBOOKING = "VehicleBooking";

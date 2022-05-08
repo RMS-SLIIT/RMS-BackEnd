@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.management.dto.EmployeeDto;
 import com.restaurant.management.dto.EmployeeSearchDto;
+import com.restaurant.management.dto.InventoryDto;
 import com.restaurant.management.dto.RoomBookingDto;
 import com.restaurant.management.entities.Employee;
+import com.restaurant.management.entities.Inventory;
 import com.restaurant.management.mapper.Mapper;
 import com.restaurant.management.services.EmployeeService;
 import com.restaurant.management.util.Constants;
@@ -70,6 +73,18 @@ public class EmployeeController {
 		}
 		employeeService.deleteEmployeeById(id);
 		return new ResponseEntity<Object>(Constants.DELETE_EMPLOYEE_SUCCESS, HttpStatus.OK);
+	}
+
+	@PutMapping(value = EndPointURI.EMPLOYEE)
+	public ResponseEntity<Object> editEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
+		if (!employeeService.isEmployeeIdExists(employeeDto.getId())) {
+			return new ResponseEntity<>(Constants.INVENTORY, HttpStatus.BAD_REQUEST);
+		}
+		Employee emp = new Employee();
+		emp = employeeService.getEmployeeById(employeeDto.getId());
+		employeeDto.setDateOfBirth(emp.getDateOfBirth());
+		employeeService.updateEmployee(mapper.map(employeeDto, Employee.class));
+		return new ResponseEntity<>(Constants.UPDATE_EMPLOYEE_SUCCESS, HttpStatus.OK);
 	}
 
 }
