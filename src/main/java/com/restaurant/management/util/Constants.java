@@ -45,4 +45,10 @@ public class Constants {
 	public static final String EDIT_TRANSPORT_SUCCESS = "Transport Edited Successfully";
 	public static final String DELETE_TRANSPORT_SUCCESS = "Transport Deleted Successfully";
 
+	// food
+	public static final String FOOD = "Food";
+	public static final String ADD_FOOD_SUCCESS = "Food Added Successfully";
+	public static final String EDIT_FOOD_SUCCESS = "Food Edited Successfully";
+	public static final String DELETE_FOOD_SUCCESS = "Food Deleted Successfully";
+
 }
