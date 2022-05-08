@@ -54,7 +54,7 @@ public class TransportController {
 	@GetMapping(value = EndPointURI.TRANSPORT_SEARCH)
 	public ResponseEntity<Object> searchTransport(TransportSearchDto transportDto) {
 		return new ResponseEntity<>(
-				mapper.map(transportService.multipulSearchTransport(transportDto), TransportSearchDto.class),
+				mapper.map(transportService.multipulSearchTransport(transportDto), TransportDto.class),
 				HttpStatus.OK);
 	}
 
