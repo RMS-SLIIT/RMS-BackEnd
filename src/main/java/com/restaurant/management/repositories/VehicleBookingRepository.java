@@ -1,14 +1,13 @@
 package com.restaurant.management.repositories;
 
-import java.sql.Date;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
-import com.restaurant.management.entities.Banquet;
+import com.restaurant.management.entities.VehicleBooking;
 
 @Repository
-public interface BanquetRepository extends JpaRepository<Banquet, Long>, QuerydslPredicateExecutor<Banquet> {
-	public boolean existsByDateOfEvent(Date dateOfEvent);
+public interface VehicleBookingRepository
+		extends JpaRepository<VehicleBooking, Long>, QuerydslPredicateExecutor<VehicleBooking> {
+
 }
