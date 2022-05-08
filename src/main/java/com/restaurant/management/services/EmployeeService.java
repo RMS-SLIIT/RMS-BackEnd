@@ -13,6 +13,8 @@ public interface EmployeeService {
 
 	public List<Employee> getAllEmployees();
 
+	public Employee getEmployeeById(Long id);
+
 	public boolean isEmployeeIdExists(String employeeId);
 
 	public Employee getEmployeeByEmployeeId(String employeeId);
@@ -20,6 +22,8 @@ public interface EmployeeService {
 	public boolean isEmployeeIdExists(Long id);
 
 	public String deleteEmployeeById(Long id);
+
+	public void updateEmployee(Employee employee);
 
 	public List<Employee> multipulSearchEmployee(EmployeeSearchDto employeeSearchDto);
 
