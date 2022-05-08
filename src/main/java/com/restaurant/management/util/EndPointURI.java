@@ -42,4 +42,9 @@ public class EndPointURI {
 	public static final String TRANSPORT_BY_ID = TRANSPORT + SLASH + ID;
 	public static final String TRANSPORT_SEARCH = BASE_API_PATH + "transportsearch";
 
+	// food
+	public static final String FOOD = BASE_API_PATH + "food";
+	public static final String FOOD_BY_ID = FOOD + SLASH + ID;
+	public static final String FOOD_SEARCH = BASE_API_PATH + "foodsearch";
+
 }
